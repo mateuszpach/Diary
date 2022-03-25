@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Diary</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="catalog_fragment_label">Catalog</string>
+    <string name="add_text_fragment_label">Add text entry</string>
+
+</resources>

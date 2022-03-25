@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/CatalogFragment">
+
+    <fragment
+        android:id="@+id/CatalogFragment"
+        android:name="com.github.mateuszpach.diary.catalog.CatalogFragment"
+        android:label="@string/catalog_fragment_label"
+        tools:layout="@layout/fragment_catalog">
+
+        <action
+            android:id="@+id/action_CatalogFragment_to_AddTextFragment"
+            app:destination="@id/AddTextFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddTextFragment"
+        android:name="com.github.mateuszpach.diary.add_text.AddTextFragment"
+        android:label="@string/add_text_fragment_label"
+        tools:layout="@layout/fragment_add_text">
+
+        <action
+            android:id="@+id/action_AddTextFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+    </fragment>
+</navigation>
