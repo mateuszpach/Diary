@@ -12,11 +12,13 @@ public class Entry {
     public Date date;
     public String location;
     public EntryType entryType;
+    public String content;
 
-    public Entry(int id, Date date, String location, EntryType entryType) {
+    public Entry(int id, Date date, String location, EntryType entryType, String content) {
         this.id = id;
         this.date = date;
         this.location = location;
         this.entryType = entryType;
+        this.content = content;
     }
 }

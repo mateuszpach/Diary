@@ -1,15 +1,16 @@
-package com.github.mateuszpach.diary.add_text;
+package com.github.mateuszpach.diary.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.github.mateuszpach.diary.EntryViewModel;
+import com.github.mateuszpach.diary.Injection;
 import com.github.mateuszpach.diary.R;
 import com.github.mateuszpach.diary.data.Entry;
 import com.github.mateuszpach.diary.data.EntryType;
@@ -18,11 +19,12 @@ import com.github.mateuszpach.diary.databinding.FragmentAddTextBinding;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 public class AddTextFragment extends Fragment {
 
     private FragmentAddTextBinding binding;
-    private EditText editText;
-    private AddTextViewModel addTextViewModel;
+    private EntryViewModel viewModel;
 
     @Override
     public View onCreateView(
@@ -31,9 +33,8 @@ public class AddTextFragment extends Fragment {
     ) {
 
         binding = FragmentAddTextBinding.inflate(inflater, container, false);
-        editText = getView().findViewById(R.id.editText);
+        viewModel = Injection.provideAddTextViewModel(this.getContext());
 
-//        userViewModel = ViewModelProvider(this).get();
         return binding.getRoot();
     }
 
@@ -57,15 +58,13 @@ public class AddTextFragment extends Fragment {
     }
 
     private void insertEntry() {
-        String content = editText.getText().toString();
+        String content = binding.editText.getText().toString();
         Date currentDate = Calendar.getInstance().getTime();
-        String location = "Krakow";
-
+        String location = "Krakow, Poland";
         if (!content.isEmpty()) {
-            Entry newEntry = new Entry(0, currentDate, location, EntryType.TEXT);
+            Entry newEntry = new Entry(0, currentDate, location, EntryType.TEXT, content);
+            viewModel.addEntry(newEntry);
         }
-
-
     }
 
 }

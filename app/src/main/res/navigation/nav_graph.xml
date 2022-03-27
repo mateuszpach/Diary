@@ -7,22 +7,37 @@
 
     <fragment
         android:id="@+id/CatalogFragment"
-        android:name="com.github.mateuszpach.diary.catalog.CatalogFragment"
+        android:name="com.github.mateuszpach.diary.fragments.CatalogFragment"
         android:label="@string/catalog_fragment_label"
         tools:layout="@layout/fragment_catalog">
 
         <action
             android:id="@+id/action_CatalogFragment_to_AddTextFragment"
             app:destination="@id/AddTextFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_ViewTextFragment"
+            app:destination="@id/ViewTextFragment" />
     </fragment>
     <fragment
         android:id="@+id/AddTextFragment"
-        android:name="com.github.mateuszpach.diary.add_text.AddTextFragment"
+        android:name="com.github.mateuszpach.diary.fragments.AddTextFragment"
         android:label="@string/add_text_fragment_label"
         tools:layout="@layout/fragment_add_text">
 
         <action
             android:id="@+id/action_AddTextFragment_to_CatalogFragment"
             app:destination="@id/CatalogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ViewTextFragment"
+        android:name="com.github.mateuszpach.diary.fragments.ViewTextFragment"
+        android:label="@string/view_text_fragment_label"
+        tools:layout="@layout/fragment_view_text" >
+        <action
+            android:id="@+id/action_ViewTextFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+        <argument
+            android:name="EntryId"
+            app:argType="integer" />
     </fragment>
 </navigation>

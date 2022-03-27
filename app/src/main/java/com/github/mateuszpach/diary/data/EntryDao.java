@@ -7,14 +7,16 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 @Dao
 public interface EntryDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    Completable addEntry(Entry entry);
+    void addEntry(Entry entry);
 
     @Query("SELECT * FROM entry ORDER BY date DESC")
-    Flowable<List<Entry>> readAllEntries();
+    Flowable<List<Entry>> getAllEntries();
+
+    @Query("SELECT * FROM entry WHERE id=:id")
+    Flowable<Entry> getEntryById(int id);
 }
