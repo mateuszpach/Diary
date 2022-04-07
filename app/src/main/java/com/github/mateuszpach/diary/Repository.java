@@ -10,6 +10,8 @@ import io.reactivex.Flowable;
 public interface Repository {
     Completable addEntry(Entry entry);
 
+    Completable deleteEntry(Entry entry);
+
     Flowable<List<Entry>> getAllEntries();
 
     Flowable<Entry> getEntryById(int id);

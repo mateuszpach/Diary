@@ -21,6 +21,11 @@ public class RoomRepository implements Repository {
     }
 
     @Override
+    public Completable deleteEntry(Entry entry) {
+        return Completable.fromAction(() -> entryDao.deleteEntry(entry));
+    }
+
+    @Override
     public Flowable<List<Entry>> getAllEntries() {
         return entryDao.getAllEntries();
     }

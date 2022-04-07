@@ -8,18 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.ListFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.mateuszpach.diary.FormatDate;
+import com.github.mateuszpach.diary.DateFormatter;
 import com.github.mateuszpach.diary.R;
 import com.github.mateuszpach.diary.data.Entry;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
@@ -42,7 +38,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Entry entry = entries.get(position);
         ((TextView) holder.itemView.findViewById(R.id.locationTextView)).setText(entry.location);
-        ((TextView) holder.itemView.findViewById(R.id.dateTextView)).setText(FormatDate.format(entry.date));
+        ((TextView) holder.itemView.findViewById(R.id.dateTextView)).setText(DateFormatter.format(entry.date));
 
         holder.itemView.findViewById(R.id.catalogRow).setOnClickListener(v -> {
             CatalogFragmentDirections.ActionCatalogFragmentToViewTextFragment action =

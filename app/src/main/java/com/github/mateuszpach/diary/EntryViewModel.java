@@ -6,7 +6,6 @@ import com.github.mateuszpach.diary.data.Entry;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -20,6 +19,10 @@ public class EntryViewModel extends ViewModel {
 
     public void addEntry(Entry entry) {
         repository.addEntry(entry).subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    public void deleteEntry(Entry entry) {
+        repository.deleteEntry(entry).subscribeOn(Schedulers.io()).subscribe();
     }
 
     public Flowable<List<Entry>> getAllEntries() {
