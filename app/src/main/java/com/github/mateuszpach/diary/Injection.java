@@ -11,7 +11,7 @@ public class Injection {
         return new RoomRepository(database.entryDao());
     }
 
-    public static EntryViewModel provideAddTextViewModel(Context context) {
+    public static EntryViewModel provideEntryViewModel(Context context) {
         return new EntryViewModel(provideRoomRepository(context));
     }
 }

@@ -24,14 +24,16 @@ public class CatalogFragment extends Fragment {
     private FragmentCatalogBinding binding;
     private EntryViewModel viewModel;
     private CompositeDisposable disposables;
+    private boolean isExpandedMenu;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCatalogBinding.inflate(inflater, container, false);
-        viewModel = Injection.provideAddTextViewModel(this.getContext());
+        viewModel = Injection.provideEntryViewModel(this.getContext());
         disposables = new CompositeDisposable();
 
         setupRecyclerView();
+        isExpandedMenu = false;
 
         return binding.getRoot();
     }
@@ -46,16 +48,46 @@ public class CatalogFragment extends Fragment {
                 .observeOn(Schedulers.io())
                 .subscribe(entries -> {
                     adapter.setData(entries);
-                    getActivity().runOnUiThread(adapter::notifyDataSetChanged);
+                    requireActivity().runOnUiThread(adapter::notifyDataSetChanged);
                 }));
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.floatingActionButton.setOnClickListener(v -> NavHostFragment
+        binding.floatingActionButtonMenu.setOnClickListener(v -> {
+            if (!isExpandedMenu) {
+                binding.floatingActionButtonText.show();
+                binding.floatingActionButtonVoice.show();
+                binding.floatingActionButtonVideo.show();
+                binding.floatingActionButtonDrawing.show();
+                binding.floatingActionButtonMenu.setImageResource(R.drawable.ic_baseline_close_24);
+                isExpandedMenu = true;
+            } else {
+                binding.floatingActionButtonText.hide();
+                binding.floatingActionButtonVoice.hide();
+                binding.floatingActionButtonVideo.hide();
+                binding.floatingActionButtonDrawing.hide();
+                binding.floatingActionButtonMenu.setImageResource(R.drawable.ic_baseline_add_24);
+                isExpandedMenu = false;
+            }
+        });
+
+        binding.floatingActionButtonText.setOnClickListener(v -> NavHostFragment
                 .findNavController(CatalogFragment.this)
                 .navigate(R.id.action_CatalogFragment_to_AddTextFragment));
+
+        binding.floatingActionButtonVoice.setOnClickListener(v -> NavHostFragment
+                .findNavController(CatalogFragment.this)
+                .navigate(R.id.action_CatalogFragment_to_AddVoiceFragment));
+
+//        binding.floatingActionButtonVoice.setOnClickListener(v -> NavHostFragment
+//                .findNavController(CatalogFragment.this)
+//                .navigate(R.id.action_CatalogFragment_to_AddVideoFragment));
+//
+//        binding.floatingActionButtonVoice.setOnClickListener(v -> NavHostFragment
+//                .findNavController(CatalogFragment.this)
+//                .navigate(R.id.action_CatalogFragment_to_AddDrawingFragment));
     }
 
     @Override

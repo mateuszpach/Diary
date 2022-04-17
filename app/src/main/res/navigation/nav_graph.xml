@@ -17,6 +17,12 @@
         <action
             android:id="@+id/action_CatalogFragment_to_ViewTextFragment"
             app:destination="@id/ViewTextFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_AddVoiceFragment"
+            app:destination="@id/AddVoiceFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_ViewVoiceFragment"
+            app:destination="@id/ViewVoiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/AddTextFragment"
@@ -32,9 +38,31 @@
         android:id="@+id/ViewTextFragment"
         android:name="com.github.mateuszpach.diary.fragments.ViewTextFragment"
         android:label="@string/view_text_fragment_label"
-        tools:layout="@layout/fragment_view_text" >
+        tools:layout="@layout/fragment_view_text">
         <action
             android:id="@+id/action_ViewTextFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+        <argument
+            android:name="EntryId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddVoiceFragment"
+        android:name="com.github.mateuszpach.diary.fragments.AddVoiceFragment"
+        android:label="@string/add_voice_fragment_label"
+        tools:layout="@layout/fragment_add_voice">
+
+        <action
+            android:id="@+id/action_AddVoiceFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ViewVoiceFragment"
+        android:name="com.github.mateuszpach.diary.fragments.ViewVoiceFragment"
+        android:label=""
+        tools:layout="@layout/fragment_view_voice">
+        <action
+            android:id="@+id/action_ViewVoiceFragment_to_CatalogFragment"
             app:destination="@id/CatalogFragment" />
         <argument
             android:name="EntryId"

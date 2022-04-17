@@ -32,12 +32,12 @@ public class ViewTextFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
         binding = FragmentViewTextBinding.inflate(inflater, container, false);
-        viewModel = Injection.provideAddTextViewModel(this.getContext());
+        viewModel = Injection.provideEntryViewModel(this.getContext());
         disposables = new CompositeDisposable();
 
         loadEntry();
@@ -49,7 +49,7 @@ public class ViewTextFragment extends Fragment {
         int id = ViewTextFragmentArgs.fromBundle(getArguments()).getEntryId();
         disposables.add(viewModel.getEntryById(id)
                 .observeOn(Schedulers.io())
-                .subscribe(entry -> getActivity().runOnUiThread(() -> {
+                .subscribe(entry -> requireActivity().runOnUiThread(() -> {
                     binding.dateTextView.setText(DateFormatter.format(entry.date));
                     binding.locationTextView.setText(entry.location);
                     binding.contentTextView.setText(entry.content);
@@ -68,7 +68,7 @@ public class ViewTextFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_view, menu);
         deleteButton = menu.findItem(R.id.delete_button);
         deleteButton.setVisible(false);
