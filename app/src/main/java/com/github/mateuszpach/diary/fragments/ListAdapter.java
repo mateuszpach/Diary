@@ -54,11 +54,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 break;
             case VIDEO:
                 icon.setImageResource(R.drawable.ic_baseline_videocam_24);
-//                action = CatalogFragmentDirections.actionCatalogFragmentToViewVideoFragment(entry.id);
+                action = CatalogFragmentDirections.actionCatalogFragmentToViewVideoFragment(entry.id);
                 break;
             case DRAWING:
                 icon.setImageResource(R.drawable.ic_baseline_insert_photo_24);
-//                action = CatalogFragmentDirections.actionCatalogFragmentToViewDrawFragment(entry.id);
+                action = CatalogFragmentDirections.actionCatalogFragmentToViewDrawingFragment(entry.id);
                 break;
         }
 

@@ -81,13 +81,13 @@ public class CatalogFragment extends Fragment {
                 .findNavController(CatalogFragment.this)
                 .navigate(R.id.action_CatalogFragment_to_AddVoiceFragment));
 
-//        binding.floatingActionButtonVoice.setOnClickListener(v -> NavHostFragment
-//                .findNavController(CatalogFragment.this)
-//                .navigate(R.id.action_CatalogFragment_to_AddVideoFragment));
-//
-//        binding.floatingActionButtonVoice.setOnClickListener(v -> NavHostFragment
-//                .findNavController(CatalogFragment.this)
-//                .navigate(R.id.action_CatalogFragment_to_AddDrawingFragment));
+        binding.floatingActionButtonVideo.setOnClickListener(v -> NavHostFragment
+                .findNavController(CatalogFragment.this)
+                .navigate(R.id.action_CatalogFragment_to_AddVideoFragment));
+
+        binding.floatingActionButtonDrawing.setOnClickListener(v -> NavHostFragment
+                .findNavController(CatalogFragment.this)
+                .navigate(R.id.action_CatalogFragment_to_AddDrawingFragment));
     }
 
     @Override

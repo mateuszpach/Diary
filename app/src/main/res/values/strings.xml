@@ -9,6 +9,8 @@
     <string name="catalog_fragment_label">Catalog</string>
     <string name="add_text_fragment_label">Add text entry</string>
     <string name="add_voice_fragment_label">Add voice entry</string>
+    <string name="add_video_fragment_label">Add video entry</string>
+    <string name="add_drawing_fragment_label">Add drawing entry</string>
     <string name="add_text_hint">Add you note here</string>
     <string name="view_text_fragment_label" />
     <string name="save_button">Save</string>

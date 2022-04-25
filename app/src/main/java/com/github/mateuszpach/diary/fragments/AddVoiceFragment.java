@@ -44,7 +44,6 @@ public class AddVoiceFragment extends AddFragment {
             binding.timerTextView.setText(new SimpleDateFormat("mm:ss", Locale.UK)
                     .format(new Date(MAX_RECORDING_TIME - left)));
             if (left < 2000) {
-
                 stopRecording();
             }
         }

@@ -23,6 +23,18 @@
         <action
             android:id="@+id/action_CatalogFragment_to_ViewVoiceFragment"
             app:destination="@id/ViewVoiceFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_AddVideoFragment"
+            app:destination="@id/AddVideoFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_ViewVideoFragment"
+            app:destination="@id/ViewVideoFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_AddDrawingFragment"
+            app:destination="@id/AddDrawingFragment" />
+        <action
+            android:id="@+id/action_CatalogFragment_to_ViewDrawingFragment"
+            app:destination="@id/ViewDrawingFragment" />
     </fragment>
     <fragment
         android:id="@+id/AddTextFragment"
@@ -63,6 +75,48 @@
         tools:layout="@layout/fragment_view_voice">
         <action
             android:id="@+id/action_ViewVoiceFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+        <argument
+            android:name="EntryId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddVideoFragment"
+        android:name="com.github.mateuszpach.diary.fragments.AddVideoFragment"
+        android:label="@string/add_video_fragment_label"
+        tools:layout="@layout/fragment_add_video">
+        <action
+            android:id="@+id/action_AddVideoFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ViewVideoFragment"
+        android:name="com.github.mateuszpach.diary.fragments.ViewVideoFragment"
+        android:label=""
+        tools:layout="@layout/fragment_view_video">
+        <action
+            android:id="@+id/action_ViewVideoFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+        <argument
+            android:name="EntryId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddDrawingFragment"
+        android:name="com.github.mateuszpach.diary.fragments.AddDrawingFragment"
+        android:label="@string/add_drawing_fragment_label"
+        tools:layout="@layout/fragment_add_drawing">
+        <action
+            android:id="@+id/action_AddDrawingFragment_to_CatalogFragment"
+            app:destination="@id/CatalogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ViewDrawingFragment"
+        android:name="com.github.mateuszpach.diary.fragments.ViewDrawingFragment"
+        android:label=""
+        tools:layout="@layout/fragment_view_drawing">
+        <action
+            android:id="@+id/action_ViewDrawingFragment_to_CatalogFragment"
             app:destination="@id/CatalogFragment" />
         <argument
             android:name="EntryId"
