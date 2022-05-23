@@ -34,6 +34,7 @@ public class AddVoiceFragment extends AddFragment {
 
     private FragmentAddVoiceBinding binding;
     private final long MAX_RECORDING_TIME = 60 * 60 * 1000 + 1000;
+    private final long TIMEOUT_DELTA = 2000;
     private String storagePath;
     private final String recordingFilename = UUID.randomUUID().toString();
     private MediaRecorder recorder;
@@ -43,7 +44,7 @@ public class AddVoiceFragment extends AddFragment {
         public void onTick(long left) {
             binding.timerTextView.setText(new SimpleDateFormat("mm:ss", Locale.UK)
                     .format(new Date(MAX_RECORDING_TIME - left)));
-            if (left < 2000) {
+            if (left < TIMEOUT_DELTA) {
                 stopRecording();
             }
         }
